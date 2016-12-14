@@ -29,7 +29,7 @@ namespace Nancy.Swagger.Services
             };
         }
 
-        public ApiDeclaration GetApiDeclaration(string resourcePath)
+        public ApiDeclaration GetApiDeclaration(string resourcePath, string sBasePath)
         {
             var routeData = _metadataProvider.RetrieveSwaggerRouteData()
                 .Where(d => d.ResourcePath == resourcePath)
@@ -37,7 +37,8 @@ namespace Nancy.Swagger.Services
 
             var apiDeclaration = new ApiDeclaration
             {
-                BasePath = new Uri("/", UriKind.Relative),
+                //BasePath = new Uri("/test", UriKind.Relative),//PetrK, we need something like this!
+                BasePath = new Uri(sBasePath, UriKind.Relative),
                 Apis = routeData.GroupBy(d => d.ApiPath).Select(GetApi).OrderBy(api => api.Path)
             };
 

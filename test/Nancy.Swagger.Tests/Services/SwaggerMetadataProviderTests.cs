@@ -25,7 +25,7 @@ namespace Nancy.Swagger.Tests.Services
                 };
 
             // Act
-            var declaration = converter.GetApiDeclaration("/test");
+            var declaration = converter.GetApiDeclaration("/test", "/");
 
             // Assert
             declaration.Models.Count.ShouldEqual(0);
@@ -41,7 +41,7 @@ namespace Nancy.Swagger.Tests.Services
                 };
 
             // Act
-            var declaration = converter.GetApiDeclaration("/test");
+            var declaration = converter.GetApiDeclaration("/test", "/");
 
             // Assert
             declaration.Models.Keys.ShouldContain("TestModel");

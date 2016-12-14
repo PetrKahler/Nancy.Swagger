@@ -10,7 +10,10 @@ namespace Nancy.Swagger.Modules
         {
             Get["/"] = _ => converter.GetResourceListing().ToJson();
 
-            Get["/{resourcePath*}"] = _ => converter.GetApiDeclaration("/" + _.resourcePath).ToJson();
+            Get["/{resourcePath*}"] = _ =>
+            {
+                return converter.GetApiDeclaration("/" + _.resourcePath, Request.Url.BasePath).ToJson();
+            };
         }
     }
 }

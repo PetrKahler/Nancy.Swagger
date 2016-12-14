@@ -8,6 +8,6 @@ namespace Nancy.Swagger.Services
     {
         ResourceListing GetResourceListing();
 
-        ApiDeclaration GetApiDeclaration(string resourcePath);
+        ApiDeclaration GetApiDeclaration(string resourcePath, string sBasePath);
     }
 }
